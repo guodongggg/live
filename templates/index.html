@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>live</title> 
+</head>
+<body>
+
+<div id="container" style="width:100%">
+
+<div id="header" style="background-color:#e3f6ff;">
+<h1 style="margin-bottom:0;">ShowLive</h1></div>
+
+<div id="menu" style="background-color:#fbfbfb;height:200px;width:10%;float:left;">
+<b>列表</b><br>
+英雄联盟<br>
+MORE<br>
+</div>
+<!--<div id="content" style="background-color:#EEEEEE;height:100%;width:90%;float:left;"> -->
+<div id="content" style="height:100%;width:90%;float:left;">
+
+    {% for info in infos  %}
+        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
+            <a href="{{ info.url }}" target="_blank"><img src="{{ info.room_src }}" alt="boom" /></a>
+            <p>{{ info.nickname }}</p>
+            <a href="{{ info.url }}" target="_blank"><p>{{ info.room_name }}</p></a>
+            <p>人气：{{  info.online }}</p>
+        </div>
+    {% endfor %}
+
+</div>
+<div id="footer" style="background-color:#dcdcdc;width:100%;clear:both;text-align:center;">
+by © guodongggg@gmail.com</div>
+
+</div>
+</div>
+</body>
+</html>
