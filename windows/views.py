@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import requests
 import re
 import urllib.request
-
+import ssl
 
 def index(request):
     # 斗鱼官方的API接口
@@ -14,6 +14,7 @@ def index(request):
 
     # 虎牙
     # 通过爬虫提取直播信息
+    ssl._create_default_https_context = ssl._create_unverified_context
     response = urllib.request.urlopen('https://www.huya.com/g/lol')
     content = response.read().decode('utf-8')
     # print(content)
