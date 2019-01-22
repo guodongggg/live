@@ -29,6 +29,15 @@
         </div>
     {% endfor %}
 
+    {% for huya in huya_list  %}
+        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
+            <a href="{{ huya.url }}" target="_blank"><img src="{{ huya.img }}" alt="boom" /></a>
+            <p>{{ huya.nick }}</p>
+            <a href="{{ huya.url }}" target="_blank"><p>{{ huya.name }}</p></a>
+            <p>人气：{{  huya.online }}</p>
+        </div>
+    {% endfor %}
+
 </div>
 <div id="footer" style="background-color:#dcdcdc;width:100%;clear:both;text-align:center;">
 by © guodongggg@gmail.com</div>
