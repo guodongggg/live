@@ -19,7 +19,7 @@ def index(request):
     content = response.read().decode('utf-8')
     # print(content)
     reg_img = r'class="pic" data-original="(.+?)" src='
-    reg_name = r'title="(.+?) target="_blank">'
+    reg_name = r'title="(.+?)" target="_blank">'
     reg_nick = r'<i class="nick" title="(.+?)">'
     reg_online = r'<i class="js-num">(.+?)</i></span>'
     reg_url = r'<a href="(.+?)" class="title new-clickstat"'
