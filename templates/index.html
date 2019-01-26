@@ -19,7 +19,7 @@
 </div>
 <!--<div id="content" style="background-color:#EEEEEE;height:100%;width:90%;float:left;"> -->
 <div id="content" style="height:100%;width:90%;float:left;">
-
+<!--
     {% for info in infos  %}
         <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
             <a href="{{ info.url }}" target="_blank"><img src="{{ info.room_src }}" alt="boom" /></a>
@@ -31,13 +31,21 @@
 
     {% for huya in huya_list  %}
         <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
-            <a href="{{ huya.url }}" target="_blank"><img src="{{ huya.img }}" alt="boom" /></a>
-            <p>{{ huya.nick }}</p>
-            <a href="{{ huya.url }}" target="_blank"><p>{{ huya.name }}</p></a>
+            <a href="{{ huya.url }}" target="_blank"><img src="{{ huya.room_src }}" alt="boom" /></a>
+            <p>{{ huya.nickname }}</p>
+            <a href="{{ huya.url }}" target="_blank"><p>{{ huya.room_name }}</p></a>
             <p>人气：{{  huya.online }}</p>
         </div>
     {% endfor %}
-
+-->
+    {% for all_info in all_infos %}
+        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
+            <a href="{{ all_info.url }}" target="_blank"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></a>
+            <p>{{ all_info.nickname }}</p>
+            <a href="{{ all_info.url }}" target="_blank"><p>{{ all_info.room_name }}</p></a>
+            <p>人气：{{  all_info.online }}</p>
+        </div>
+    {% endfor %}
 </div>
 <div id="footer" style="background-color:#dcdcdc;width:100%;clear:both;text-align:center;">
 by © guodongggg@gmail.com</div>

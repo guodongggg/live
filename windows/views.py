@@ -4,6 +4,7 @@ import requests
 import re
 import urllib.request
 import ssl
+import operator
 
 def index(request):
     # 斗鱼官方的API接口
@@ -41,16 +42,37 @@ def index(request):
 
     while i < int(len(imglist)):
         zb = {}
-        zb['name'] = namelist[i]
-        zb['img'] = imglist[i]
-        zb['nick'] = nicklist[i]
+        zb['room_name'] = namelist[i]
+        zb['room_src'] = imglist[i]
+        zb['nickname'] = nicklist[i]
         zb['url'] = urllist[i]
         zb['online'] = onlinelist[i]
         huya_list.append(zb)
         i += 1
+    old_infos = infos + huya_list
 
+    def online_change(num_lists, num_key='online'):
+        # 将含万的人气值转换为数字
+        for num_list in num_lists:
+            list_num = str(num_list[num_key])
+            reg = r'(.+?)万'
+            matchObj = re.match(reg, list_num)
+            if matchObj:
+                num_list['online'] = int(float(matchObj.group(1)) * 10000)
+            else:
+                num_list['online'] = int(num_list['online'])
+        # 按online的值大小重新排序列表
+        num_lists = sorted(num_lists, key=operator.itemgetter('online'), reverse=True)
+        # 大于1万人气重新加上万为单位
+        for x in num_lists:
+            if x[num_key] > 10000:
+                x[num_key] = str(round(x[num_key] / 10000, 1)) + '万'
+        return num_lists
+
+    all_infos = online_change(old_infos)
     # 返回列表
-    return render(request, 'index.html', {'infos': infos, 'huya_list': huya_list})
+    return render(request, 'index.html', {'all_infos': all_infos})
+
 
 
 
