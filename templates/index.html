@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ShowLive</title>
+    <style type="text/css">
+        a:link{
+            color: gray;
+        }
+        a:visited{
+            color: gray;
+        }
+        a:hover,a:active{
+            text-decoration:underline;color: #2b2b2b;
+        }
+        A {text-decoration: none}
+    </style>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link rel="icon" type="images/x-icon" href="../static/images/favicon.ico" />
+    <title>ShowLive</title>
 </head>
-<body style="margin-top: 0;margin-right: 0;">
+
+
+<body style="margin: 0;";>
 <div id="container" style="width:100%">
 
-<div id="header" style="background-color:#e3f6ff;">
-<h1 style="margin-bottom:0;margin-top: 0;">ShowLive</h1></div>
+<div id="header" style="background-color:#101010;width: 100%;position: fixed;top: 0;">
+<h1 style="margin-bottom:10px;margin-top: 0;color: white">ShowLive</h1></div>
 
-<div id="menu" style="height:700px;width:10%;float:left;background: linear-gradient(to bottom, #f6f6f6 ,white)">
+<div id="menu" style="margin-top:100px;height:700px;width:10%;float:left;background: linear-gradient(to bottom, #f6f6f6 ,white)">
 <b>列表</b><br>
 英雄联盟<br>
 --------<br>
@@ -18,7 +34,7 @@
 --------<br>
 </div>
 <!--<div id="content" style="background-color:#EEEEEE;height:100%;width:90%;float:left;"> -->
-<div id="content" style="height:100%;width:90%;float:left;">
+<div id="content" style="margin-top:100px;height:100%;width:90%;float:left;">
 <!--
     {% for info in infos  %}
         <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
@@ -39,11 +55,11 @@
     {% endfor %}
 -->
     {% for all_info in all_infos %}
-        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
-            <a href="{{ all_info.url }}" target="_blank"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></a>
-            <p>{{ all_info.nickname }}</p>
-            <a href="{{ all_info.url }}" target="_blank"><p>{{ all_info.room_name }}</p></a>
-            <p>人气：{{  all_info.online }}</p>
+        <div id="room" style="background-color:#fafafa;float:left; width:220px;height: 250px;margin-bottom: 10px;margin-right: 10px;border-radius: 20px;">
+            <a href="{{ all_info.url }}" target="_blank"><p style="text-align: center"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></p></a>
+            <p style="margin-top:3px;color:#337ab7; width: 200px;text-align: center;">{{ all_info.nickname }}</p>
+            <a href="{{ all_info.url }}" target="_blank"><p style="width: 220px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ all_info.room_name }}</p></a>
+            <p style="font-size: 3px;">人气：{{  all_info.online }}</p>
         </div>
     {% endfor %}
 </div>
