@@ -12,6 +12,28 @@
             text-decoration:underline;color: #2b2b2b;
         }
         A {text-decoration: none}
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            overflow: auto;
+            }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+            }
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+            }
     </style>
     <meta charset="UTF-8">
     {% load staticfiles %}
@@ -20,40 +42,29 @@
 </head>
 
 
-<body style="margin: 0;";>
+<body style="margin: 0;">
 <div id="container" style="width:100%">
 
-<div id="header" style="background-color:#101010;width: 100%;position: fixed;top: 0;">
-<h1 style="margin-bottom:10px;margin-top: 0;color: white">ShowLive</h1></div>
+<div id="header" style="background-color:#292929;width: 100%;position: fixed;top: 0;">
+    <div style="float: left;"><h1 style="margin-bottom:10px;margin-top: 0;color: white">ShowLive</h1></div>
+    <div><p style="color: #fafafa;float: right;">guodongggg@gmail.com</p></div>
+</div>
 
-<div id="menu" style="margin-top:100px;height:700px;width:10%;float:left;background: linear-gradient(to bottom, #f6f6f6 ,white)">
-<b>列表</b><br>
-英雄联盟<br>
---------<br>
-更多的内容和功能会陆续更新，有任何问题可以邮件联系我<br>
---------<br>
+<div id="menu" style="margin-top:53px;height:700px;width:15%;float:left;">
+<ul>
+  <li ><a href="">英雄联盟</a></li>
+  <li><a href="">绝地求生</a></li>
+  <li><a href="">dota2</a></li>
+  <li><a href="">CS:GO</a></li>
+  <li><a href="">炉石传说</a></li>
+  <li><a href="">主机游戏</a></li>
+  <li><a href="">守望先锋</a></li>
+  <li><a href="">地下城与勇士</a></li>
+  <li><a href="">更多</a></li>
+</ul>
 </div>
 <!--<div id="content" style="background-color:#EEEEEE;height:100%;width:90%;float:left;"> -->
-<div id="content" style="margin-top:100px;height:100%;width:90%;float:left;">
-<!--
-    {% for info in infos  %}
-        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
-            <a href="{{ info.url }}" target="_blank"><img src="{{ info.room_src }}" alt="boom" /></a>
-            <p>{{ info.nickname }}</p>
-            <a href="{{ info.url }}" target="_blank"><p>{{ info.room_name }}</p></a>
-            <p>人气：{{  info.online }}</p>
-        </div>
-    {% endfor %}
-
-    {% for huya in huya_list  %}
-        <div id="room" style="background-color:#f6f6f6;float:left; height: 311px;margin-bottom: 10px">
-            <a href="{{ huya.url }}" target="_blank"><img src="{{ huya.room_src }}" alt="boom" /></a>
-            <p>{{ huya.nickname }}</p>
-            <a href="{{ huya.url }}" target="_blank"><p>{{ huya.room_name }}</p></a>
-            <p>人气：{{  huya.online }}</p>
-        </div>
-    {% endfor %}
--->
+<div id="content" style="margin-top:100px;height:100%;width:85%;float:left;">
     {% for all_info in all_infos %}
         <div id="room" style="background-color:#fafafa;float:left; width:220px;height: 250px;margin-bottom: 10px;margin-right: 10px;border-radius: 20px;">
             <a href="{{ all_info.url }}" target="_blank"><p style="text-align: center"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></p></a>
@@ -64,7 +75,7 @@
     {% endfor %}
 </div>
 <div id="footer" style="background-color:#dcdcdc;width:100%;clear:both;text-align:center;">
-by © guodongggg@gmail.com</div>
+<p style="margin: 0;color: #313131">邮箱了解更多</p></div>
 
 </div>
 </div>

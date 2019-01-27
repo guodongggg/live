@@ -6,9 +6,15 @@ import urllib.request
 import ssl
 import operator
 
+
 def index(request):
     # 斗鱼官方的API接口
     url = 'http://open.douyucdn.cn/api/RoomApi/live/1'
+    # 代理IP，绕过反爬防护
+    # proxy = {'http': 'http://14.20.235.156:9797'}
+    # proxy = {'http': 'http://112.91.218.21:9000'}
+    # proxy = {'http': 'http://110.83.40.37:9999'}
+    # r = requests.get(url, proxies=proxy)
     r = requests.get(url)
     response_dict = r.json()
     infos = response_dict['data']
