@@ -5,6 +5,37 @@ import re
 import urllib.request
 import ssl
 import operator
+from .spider import *
+
+
+def lol(request):
+    douyu_lol = Spider('douyu', 'lol').douyu()
+    huya_lol = Spider('huya', 'lol').huya()
+
+    # 合并多个平台
+    old_infos = douyu_lol + huya_lol
+
+    # 将含万的人气值转换为数字
+    def online_change(num_lists, num_key='online'):
+        for num_list in num_lists:
+            list_num = str(num_list[num_key])
+            reg = r'(.+?)万'
+            matchObj = re.match(reg, list_num)
+            if matchObj:
+                num_list['online'] = int(float(matchObj.group(1).strip()) * 10000)
+            else:
+                num_list['online'] = int(num_list['online'])
+        # 按online的值大小重新排序列表
+        num_lists = sorted(num_lists, key=operator.itemgetter('online'), reverse=True)
+        # 大于1万人气重新加上万为单位
+        for x in num_lists:
+            if x[num_key] > 10000:
+                x[num_key] = str(round(x[num_key] / 10000, 1)) + '万'
+        return num_lists
+
+    all_infos = online_change(old_infos)
+    # 返回列表
+    return render(request, 'index.html', {'all_infos': all_infos})
 
 
 def test(request, games):
