@@ -3,8 +3,8 @@ import re
 import urllib.request
 import ssl
 
-douyu_kv = {'lol': '1', 'pubg': '270', 'dnf': '40'}
-huya_kv = {'lol': 'lol', 'pubg': '2793'}
+douyu_kv = {'lol': '1', 'pubg': '270', 'dnf': '40', 'dota2': '3', 'hearthstone': '2', 'csgo': '6', 'hmoeconsole': '19', 'overwatch': '148'}
+huya_kv = {'lol': 'lol', 'pubg': '2793', 'dnf': 'dnf', 'dota2': 'dota2', 'hearthstone': 'hearthstone', 'csgo': '862', 'hmoeconsole': '100032', 'overwatch': 'overwatch'}
 
 
 class Spider():
