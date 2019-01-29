@@ -2,25 +2,15 @@ import requests
 import re
 import urllib.request
 import ssl
-import operator
 
-douyu_kv = {'lol': '1', 'pubg': '245'}
-huya_kv = {'lol': 'lol'}
+douyu_kv = {'lol': '1', 'pubg': '270', 'dnf': '40'}
+huya_kv = {'lol': 'lol', 'pubg': '2793'}
 
 
 class Spider():
-    def __init__(self, platform, game):
-        self.platform = platform
-        if self.platform == 'douyu':
-            self.url = 'http://open.douyucdn.cn/api/RoomApi/live/%s' % douyu_kv[game]
-        elif self.platform == 'huya':
-            self.url = 'https://www.huya.com/g/%s' % huya_kv[game]
 
-    def show_info(self):
-        print(self.url)
-        print(self.platform)
-
-    def douyu(self):
+    def douyu(self, game):
+        url = 'http://open.douyucdn.cn/api/RoomApi/live/%s' % douyu_kv[game]
         # 斗鱼官方API接口
         # url = 'http://open.douyucdn.cn/api/RoomApi/live/1'
         # 代理IP，绕过反爬防护
@@ -28,16 +18,18 @@ class Spider():
         # proxy = {'http': 'http://112.91.218.21:9000'}
         # proxy = {'http': 'http://110.83.40.37:9999'}
         # r = requests.get(url, proxies=proxy)
-        r = requests.get(self.url)
+        r = requests.get(url)
         response_dict = r.json()
         douyu_list = response_dict['data']
+        print(url)
         return douyu_list
 
-    def huya(self):
+    def huya(self, game):
+        url = 'https://www.huya.com/g/%s' % huya_kv[game]
         # 虎牙
         # 通过爬虫提取直播信息
         ssl._create_default_https_context = ssl._create_unverified_context
-        response = urllib.request.urlopen('https://www.huya.com/g/lol')
+        response = urllib.request.urlopen(url)
         content = response.read().decode('utf-8')
         # print(content)
         reg_img = r'class="pic" data-original="(.+?)" src='
