@@ -42,7 +42,8 @@
 </head>
 
 
-<body style="margin: 0;">
+<body style="margin: 0;	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;">
 <div id="container" style="width:100%">
 
 <div id="header" style="background-color:#292929;width: 100%;position: fixed;top: 0;">
@@ -62,8 +63,8 @@
   <li><a href="http://jellywang.xyz/dnf/">地下城与勇士</a></li>
   <li><a href="#">更多</a></li>
     <li>
-        <div><img src="../static/images/pay.png"></div>
-        <div style=""><p>1元就足够感动我：)</p></div>
+        <div style="text-align: center"><img src="../static/images/pay.png"></div>
+        <div ><p style="margin-top: 0;text-align: center">支持一下</p></div>
     </li>
 </ul>
 </div>
@@ -73,13 +74,17 @@
         <div id="room" style="background-color:#fafafa;float:left; width:220px;height: 250px;margin-bottom: 10px;margin-right: 10px;border-radius: 20px;">
             <a href="{{ all_info.url }}" target="_blank"><p style="text-align: center"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></p></a>
             <p style="margin-top:3px;color:#337ab7; width: 200px;text-align: center;">{{ all_info.nickname }}</p>
-            <a href="{{ all_info.url }}" target="_blank"><p style="width: 220px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ all_info.room_name }}</p></a>
-            <p style="font-size: 3px;">人气：{{  all_info.online }}</p>
+            <a href="{{ all_info.url }}" target="_blank" title="{{ all_info.room_name }}"><p style="margin-bottom:10px;width: 220px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ all_info.room_name }}</p></a>
+            <div>
+                <div style="float: left;"><p style="font-size: 3px;margin-top: 0">人气：{{  all_info.online }}</p></div>
+                <div style="float: right;margin-right: 10px"><p style="font-size: 8px;margin-top: 0;">{{ all_info.platform }}</p></div>
+            </div>
+
         </div>
     {% endfor %}
 </div>
 <div id="footer" style="background-color:#dcdcdc;width:100%;clear:both;text-align:center;">
-<p style="margin: 0;color: #313131">邮箱了解更多</p></div>
+<p style="margin: 0;color: #313131">发送邮件，了解更多</p></div>
 
 </div>
 </div>

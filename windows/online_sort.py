@@ -8,7 +8,7 @@ class OnlineSort():
 
     def online_change(self, num_lists, num_key='online'):
         for num_list in num_lists:
-            list_num = str(num_list[num_key])
+            list_num = str(num_list[num_key]).replace(',', '')
             reg = r'(.+?)万'
             matchObj = re.match(reg, list_num)
             if matchObj:
