@@ -10,6 +10,7 @@ huya_kv = {'lol': 'lol', 'pubg': '2793', 'dnf': 'dnf', 'dota2': 'dota2', 'hearth
 panda_kv = {'lol': 'lol'}
 qie_kv = {'lol': 'lol'}
 
+
 class Spider():
 
     def panda(self, game):
@@ -44,7 +45,9 @@ class Spider():
         i = 0
         info_list = []
 
-        while i < int(len(namelist)):
+        # 抓取所有的房间
+        # while i < int(len(namelist)):
+        while i < 30:
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
@@ -88,7 +91,8 @@ class Spider():
         i = 0
         info_list = []
 
-        while i < int(len(namelist)):
+        # while i < int(len(namelist)):
+        while i < 30:
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
@@ -145,7 +149,8 @@ class Spider():
         i = 0
         huya_list = []
 
-        while i < int(len(imglist)):
+        # while i < int(len(imglist)):
+        while i < 30:
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
@@ -156,3 +161,9 @@ class Spider():
             huya_list.append(zb)
             i += 1
         return huya_list
+
+
+if __name__ == '__main__':
+    pass
+    # x = Spider().huya('lol')
+    # print(x[29])
