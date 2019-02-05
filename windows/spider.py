@@ -7,8 +7,10 @@ douyu_kv = {'lol': '1', 'pubg': '270', 'dnf': '40', 'dota2': '3', 'hearthstone':
             'hmoeconsole': '19', 'overwatch': '148'}
 huya_kv = {'lol': 'lol', 'pubg': '2793', 'dnf': 'dnf', 'dota2': 'dota2', 'hearthstone': 'hearthstone',
            'csgo': '862', 'hmoeconsole': '100032', 'overwatch': 'overwatch'}
-panda_kv = {'lol': 'lol'}
-qie_kv = {'lol': 'lol'}
+panda_kv = {'lol': 'lol', 'pubg': 'pubg', 'dnf': 'dnf', 'dota2': 'dota2', 'hearthstone': 'hearthstone',
+            'csgo': 'csgo', 'overwatch': 'overwatch', 'hmoeconsole': 'zhuji'}
+qie_kv = {'lol': 'lol', 'pubg': '2000000133', 'dnf': 'DNF', 'dota2': '40000001435', 'hearthstone': '2000000105',
+          'overwatch': '2000000107', 'hmoeconsole': '2000000140'}
 
 
 class Spider():
@@ -46,8 +48,7 @@ class Spider():
         info_list = []
 
         # 抓取所有的房间
-        # while i < int(len(namelist)):
-        while i < 30:
+        while i < int(len(namelist)):
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
@@ -91,8 +92,7 @@ class Spider():
         i = 0
         info_list = []
 
-        # while i < int(len(namelist)):
-        while i < 30:
+        while i < int(len(namelist)):
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
@@ -149,8 +149,7 @@ class Spider():
         i = 0
         huya_list = []
 
-        # while i < int(len(imglist)):
-        while i < 30:
+        while i < int(len(imglist)):
             zb = {}
             zb['room_name'] = namelist[i]
             zb['room_src'] = imglist[i]
