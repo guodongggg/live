@@ -10,7 +10,7 @@ huya_kv = {'lol': 'lol', 'pubg': '2793', 'dnf': 'dnf', 'dota2': 'dota2', 'hearth
 panda_kv = {'lol': 'lol', 'pubg': 'pubg', 'dnf': 'dnf', 'dota2': 'dota2', 'hearthstone': 'hearthstone',
             'csgo': 'csgo', 'overwatch': 'overwatch', 'hmoeconsole': 'zhuji'}
 qie_kv = {'lol': 'lol', 'pubg': '2000000133', 'dnf': 'DNF', 'dota2': '40000001435', 'hearthstone': '2000000105',
-          'overwatch': '2000000107', 'hmoeconsole': '2000000140'}
+          'overwatch': '2000000107', 'hmoeconsole': '2000000140', 'csgo': 'Cf'}
 
 
 class Spider():
@@ -164,5 +164,5 @@ class Spider():
 
 if __name__ == '__main__':
     pass
-    # x = Spider().huya('lol')
-    # print(x[29])
+    # x = Spider().qie('csgo')
+    # print(x[1])

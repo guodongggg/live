@@ -28,9 +28,11 @@ def index(request):
 def common(request, item):
     douyu = Spider().douyu(item)
     huya = Spider().huya(item)
+    qie = Spider().qie(item)
+    panda = Spider().panda(item)
 
     # 合并多个平台
-    old_infos = douyu + huya
+    old_infos = douyu + huya + qie + panda
 
     # 将含万的人气值转换为数字，重新进行排序
     all_infos = OnlineSort().online_change(old_infos)
