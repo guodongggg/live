@@ -70,11 +70,11 @@ class Spider():
         # file_path = 'D:\Python\爬虫\虎牙\qie.txt'
         # with open(file_path) as file_object:
         #     content = file_object.read()
-
         reg_img = r' <img src="(.+?)" alt="'
         reg_name = r'<h4 class="info-livename">(.+?)</h4>'
         reg_nick = r'><p class="name">(.+?)</p> '
-        reg_online = r'VORK5CYII=">([\s\S]*?)</span></div></a>'
+        # reg_online = r'VORK5CYII=">([\s\S]*?)</span></div></a>'
+        reg_online = r'alt="火">([\s\S]*?)</span></div></a>'
         reg_url = r'<a href="(.+?)" target="_blank" title="'
 
         reg_IMG = re.compile(reg_img)  # 编译一下，运行更快

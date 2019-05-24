@@ -2,6 +2,10 @@
 
 from windows import spider
 
-huya_lol = spider.Spider().huya('lol')
+# huya_lol = spider.Spider().huya('lol')
+#
+# print(huya_lol)
 
-print(huya_lol)
+qie_lol = spider.Spider().qie('lol')
+
+print(qie_lol)
