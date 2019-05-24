@@ -88,6 +88,8 @@ class Spider():
         nicklist = reg_NICK.findall(content)
         onlinelist = reg_ONLINE.findall(content)
         urllist = reg_URL.findall(content)
+        del(urllist[0])
+        print(urllist)
 
         i = 0
         info_list = []

@@ -6,6 +6,5 @@ from windows import spider
 #
 # print(huya_lol)
 
-qie_lol = spider.Spider().qie('lol')
+spider.Spider().qie('lol')
 
-print(qie_lol)
