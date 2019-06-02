@@ -6,5 +6,7 @@ from windows import spider
 #
 # print(huya_lol)
 
-spider.Spider().qie('lol')
+l = spider.Spider().bilibili('lol')
+print(len(l))
+
 

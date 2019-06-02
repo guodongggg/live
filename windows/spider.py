@@ -11,7 +11,7 @@ panda_kv = {'lol': 'lol', 'pubg': 'pubg', 'dnf': 'dnf', 'dota2': 'dota2', 'heart
             'csgo': 'csgo', 'overwatch': 'overwatch', 'hmoeconsole': 'zhuji'}
 qie_kv = {'lol': 'lol', 'pubg': '2000000133', 'dnf': 'DNF', 'dota2': '40000001435', 'hearthstone': '2000000105',
           'overwatch': '2000000107', 'hmoeconsole': '2000000140', 'csgo': 'Cf'}
-
+bilibili_kv = {'lol': '86'}
 
 class Spider():
 
@@ -89,7 +89,6 @@ class Spider():
         onlinelist = reg_ONLINE.findall(content)
         urllist = reg_URL.findall(content)
         del(urllist[0])
-        print(urllist)
 
         i = 0
         info_list = []
@@ -164,7 +163,48 @@ class Spider():
         return huya_list
 
 
+    def bilibili(self, game):
+        url = 'https://live.bilibili.com/p/eden/area-tags?parentAreaId=2&areaId=%s' % bilibili_kv[game]
+        # bilibili
+        # 通过爬虫提取直播信息
+        ssl._create_default_https_context = ssl._create_unverified_context
+        response = urllib.request.urlopen(url)
+        content = response.read().decode('utf-8')
+        # print(content)
+        reg_img = r'<div class="cover frame-zoom" style="background-image:url((.+?));" data-v-a719796a>'
+        reg_name = r'<h3 class="room-name t-over-hidden t-nowrap" data-v-a719796a>(.+?)</h3><div class="s-info-box"'
+        reg_nick = r'<span class="s-info uname t-over-hidden t-nowrap" data-v-a719796a>(.+?)</span>'
+        reg_online = r'<i class="icon-font icon-popular" data-v-a719796a></i>(.+?)</span>'
+        reg_url = r'<a target="_blank" href="(.+?)" data-v-a719796a>'
+
+        reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
+        reg_NAME = re.compile(reg_name)
+        reg_NICK = re.compile(reg_nick)
+        reg_ONLINE = re.compile(reg_online)
+        reg_URL = re.compile(reg_url)
+
+        imglist = reg_IMG.findall(content)
+        namelist = reg_NAME.findall(content)  # 进行匹配
+        nicklist = reg_NICK.findall(content)
+        onlinelist = reg_ONLINE.findall(content)
+        urllist = reg_URL.findall(content)
+        # print(imglist)
+        i = 0
+        bilibili_list = []
+
+        while i < int(len(namelist)):
+            zb = {}
+            zb['room_name'] = namelist[i]
+            zb['room_src'] = imglist[i][1].replace('(', '').replace(')', '')
+            zb['nickname'] = nicklist[i]
+            zb['url'] = "https://live.bilibili.com" + urllist[i]
+            zb['online'] = onlinelist[i].replace(' ', '')
+            zb['platform'] = 'bilibili'
+            bilibili_list.append(zb)
+            i += 1
+        return bilibili_list
+
+
 if __name__ == '__main__':
-    pass
-    # x = Spider().qie('csgo')
-    # print(x[1])
+    x = Spider().bilibili('lol')
+    print(x)

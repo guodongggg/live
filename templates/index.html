@@ -61,7 +61,7 @@
   <li><a href="http://jellywang.xyz/hmoeconsole/">主机游戏</a></li>
   <li><a href="http://jellywang.xyz/overwatch/">守望先锋</a></li>
   <li><a href="http://jellywang.xyz/dnf/">地下城与勇士</a></li>
-  <li><a href="#">更多</a></li>
+  <li><a href="http://jellywang.xyz/author/">关于作者</a></li>
     <li>
         <div style="text-align: center"><img src="../static/images/pay.png"></div>
         <div ><p style="margin-top: 0;text-align: center">支持一下</p></div>
@@ -72,7 +72,7 @@
 <div id="content" style="margin-top:100px;height:100%;width:85%;float:left;">
     {% for all_info in all_infos %}
         <div id="room" style="background-color:#fafafa;float:left; width:220px;height: 250px;margin-bottom: 10px;margin-right: 10px;border-radius: 20px;">
-            <a href="{{ all_info.url }}" target="_blank"><p style="text-align: center"><img src="{{ all_info.room_src }}" alt="boom" style="width: 200px;height: 110px;border-radius: 10px;" /></p></a>
+            <a href="{{ all_info.url }}" target="_blank"><p style="text-align: center"><img src="{{ all_info.room_src }}" alt="boom" onerror="this.src='../static/images/no_pic.png'" style="width: 200px;height: 110px;border-radius: 10px;" /></p></a>
             <p style="margin-top:3px;color:#337ab7; width: 200px;text-align: center;">{{ all_info.nickname }}</p>
             <a href="{{ all_info.url }}" target="_blank" title="{{ all_info.room_name }}"><p style="margin-bottom:10px;width: 220px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ all_info.room_name }}</p></a>
             <div>
