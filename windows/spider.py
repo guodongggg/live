@@ -73,9 +73,8 @@ class Spider():
         reg_img = r' <img src="(.+?)" alt="'
         reg_name = r'<h4 class="info-livename">(.+?)</h4>'
         reg_nick = r'><p class="name">(.+?)</p> '
-        # reg_online = r'VORK5CYII=">([\s\S]*?)</span></div></a>'
         reg_online = r'alt="火">([\s\S]*?)</span></div></a>'
-        reg_url = r'<a href="(.+?)" target="_blank" title="'
+        reg_url = r'data-v-6ca47386><a href="(.+?)" target="_blank"'
 
         reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
         reg_NAME = re.compile(reg_name)
@@ -88,7 +87,7 @@ class Spider():
         nicklist = reg_NICK.findall(content)
         onlinelist = reg_ONLINE.findall(content)
         urllist = reg_URL.findall(content)
-        del(urllist[0])
+
 
         i = 0
         info_list = []
