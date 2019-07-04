@@ -170,7 +170,7 @@ class Spider():
         response = urllib.request.urlopen(url)
         content = response.read().decode('utf-8')
         # print(content)
-        reg_img = r'<div class="cover frame-zoom" style="background-image:url((.+?));" data-v-a719796a>'
+        reg_img = r'<span class="cover-back cover-type" style="background-image:url((.+?));display:;"'
         reg_name = r'<h3 class="room-name t-over-hidden t-nowrap" data-v-a719796a>(.+?)</h3><div class="s-info-box"'
         reg_nick = r'<span class="s-info uname t-over-hidden t-nowrap" data-v-a719796a>(.+?)</span>'
         reg_online = r'<i class="icon-font icon-popular" data-v-a719796a></i>(.+?)</span>'
@@ -187,7 +187,7 @@ class Spider():
         nicklist = reg_NICK.findall(content)
         onlinelist = reg_ONLINE.findall(content)
         urllist = reg_URL.findall(content)
-        # print(imglist)
+        print(imglist)
         i = 0
         bilibili_list = []
 
