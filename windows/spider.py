@@ -74,7 +74,7 @@ class Spider():
         reg_name = r'<h4 class="info-livename">(.+?)</h4>'
         reg_nick = r'><p class="name">(.+?)</p> '
         reg_online = r'alt="火">([\s\S]*?)</span></div></a>'
-        reg_url = r'><a href="(.+?)" target="_blank" title="'
+        reg_url = r'<li class="gui-list-normal gui-list-percent" data-v-34bfef5e><a href="(.+?)" target="_blank" title="'
 
         reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
         reg_NAME = re.compile(reg_name)

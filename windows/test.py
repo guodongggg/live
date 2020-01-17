@@ -7,6 +7,6 @@ from windows import spider
 # print(huya_lol)
 
 show = spider.Spider().qie('lol')
-print(show)
+#print(show)
 
 
