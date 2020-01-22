@@ -72,8 +72,8 @@ class Spider():
         #     content = file_object.read()
         reg_img = r' <img src="(.+?)" alt="'
         reg_name = r'<h4 class="info-livename">(.+?)</h4>'
-        reg_nick = r'><p class="name">(.+?)</p> '
-        reg_online = r'alt="火">([\s\S]*?)</span></div></a>'
+        reg_nick = r'<!----> <p class="name">(.+?)</p> '
+        reg_online = r'bBg8AAAAASUVORK5CYII=">([\s\S]*?)</span></div></a>'
         reg_url = r'<li class="gui-list-normal gui-list-percent" data-v-34bfef5e><a href="(.+?)" target="_blank" title="'
 
         reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
