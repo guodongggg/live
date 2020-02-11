@@ -2,11 +2,11 @@
 
 from windows import spider
 
-# huya_lol = spider.Spider().huya('lol')
+huya_lol = spider.Spider().huya('lol')
 #
-# print(huya_lol)
+print(huya_lol)
 
-show = spider.Spider().qie('lol')
+# show = spider.Spider().qie('lol')
 #print(show)
 
 

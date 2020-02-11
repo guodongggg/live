@@ -131,7 +131,7 @@ class Spider():
         reg_name = r'title="(.+?)" target="_blank">'
         reg_nick = r'<i class="nick" title="(.+?)">'
         reg_online = r'<i class="js-num">(.+?)</i></span>'
-        reg_url = r'<a href="(.+?)" class="title new-clickstat"'
+        reg_url = r'<a href="(.+?)" class="title new-clickstat j_live-card'
 
         reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
         reg_NAME = re.compile(reg_name)
