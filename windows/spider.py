@@ -14,81 +14,19 @@ qie_kv = {'lol': 'lol', 'pubg': '2000000133', 'dnf': 'DNF', 'dota2': '4000000143
           'overwatch': '2000000107', 'hmoeconsole': '2000000140', 'csgo': 'Cf'}
 bilibili_kv = {'lol': '86'}
 
-class Spider():
 
-    def panda(self, game):
-        # 熊猫直播
-        url = 'https://www.panda.tv/cate/%s' % panda_kv[game]
-        # 通过爬虫提取直播信息
-        ssl._create_default_https_context = ssl._create_unverified_context
-        response = urllib.request.urlopen(url)
-        content = response.read().decode('utf-8')
-        # file_path = 'D:\Python\爬虫\虎牙\panda.txt'
-        # with open(file_path) as file_object:
-        #     content = file_object.read()
-
-        reg_img = r'data-original="(.+?)" alt="'
-        reg_name = r'<span class="video-title" title="(.+?)">'
-        reg_nick = r'class="video-nickname" title="(.+?)">'
-        reg_online = r'<i class="ricon ricon-eye"></i>(.+?)</span>'
-        reg_url = r'href="(.+?)" class="video-list-item-wrap"'
-
-        reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
-        reg_NAME = re.compile(reg_name)
-        reg_NICK = re.compile(reg_nick)
-        reg_ONLINE = re.compile(reg_online)
-        reg_URL = re.compile(reg_url)
-
-        imglist = reg_IMG.findall(content)
-        namelist = reg_NAME.findall(content)  # 进行匹配
-        nicklist = reg_NICK.findall(content)
-        onlinelist = reg_ONLINE.findall(content)
-        urllist = reg_URL.findall(content)
-
-        i = 0
-        info_list = []
-
-        # 抓取所有的房间
-        while i < int(len(namelist)):
-            zb = {}
-            zb['room_name'] = namelist[i]
-            zb['room_src'] = imglist[i]
-            zb['nickname'] = nicklist[i]
-            zb['url'] = "http://www.panda.tv" + urllist[i]
-            zb['online'] = onlinelist[i]
-            zb['platform'] = '熊猫'
-            info_list.append(zb)
-            i += 1
-        return info_list
-
+class Spider:
     def qie(self, game):
         # 企鹅电竞
         url = 'https://egame.qq.com/livelist?layoutid=%s' % qie_kv[game]
         # 通过爬虫提取直播信息
-        ssl._create_default_https_context = ssl._create_unverified_context
-        response = urllib.request.urlopen(url)
-        content = response.read().decode('utf-8')
-        # file_path = 'D:\Python\爬虫\虎牙\qie.txt'
-        # with open(file_path) as file_object:
-        #     content = file_object.read()
-        reg_img = r' <img src="(.+?)" alt="'
-        reg_name = r'<h4 class="info-livename">(.+?)</h4>'
-        reg_nick = r'info-anchor"><!----> <p class="name">(.+?)</p> '
-        reg_online = r'bBg8AAAAASUVORK5CYII=">([\s\S]*?)</span></div></a>'
-        reg_url = r'<li class="gui-list-normal gui-list-percent" data-v-34bfef5e><a href="(.+?)" target="_blank" title="'
+        alldata = qie(url)
+        imglist = alldata['imglist']
+        namelist = alldata['namelist']
+        nicklist = alldata['nicklist']
+        onlinelist = alldata['onlinelist']
+        urllist = alldata['urllist']
 
-        reg_IMG = re.compile(reg_img)  # 编译一下，运行更快
-        reg_NAME = re.compile(reg_name)
-        reg_NICK = re.compile(reg_nick)
-        reg_ONLINE = re.compile(reg_online)
-        reg_URL = re.compile(reg_url)
-
-        imglist = reg_IMG.findall(content)
-        namelist = reg_NAME.findall(content)  # 进行匹配
-        nicklist = reg_NICK.findall(content)
-        onlinelist = reg_ONLINE.findall(content)
-        urllist = reg_URL.findall(content)
-        print(urllist)
         i = 0
         info_list = []
 
