@@ -12,7 +12,6 @@ from .online_sort import *
 def index(request):
     douyu_lol = Spider().douyu('lol')
     huya_lol = Spider().huya('lol')
-    # panda_lol = Spider().panda('lol') #熊猫TV倒闭
     qie_lol = Spider().qie('lol')
     bilibili_lol = Spider().bilibili('lol')
     # 合并多个平台
@@ -30,8 +29,6 @@ def common(request, item):
     huya = Spider().huya(item)
     qie = Spider().qie(item)
 
-    # panda = Spider().panda(item) #熊猫TV倒闭
-
     # 合并多个平台
     old_infos = douyu + huya + qie
 
@@ -41,6 +38,20 @@ def common(request, item):
     # 返回列表
     return render(request, 'index.html', {'all_infos': all_infos})
 
+def GetCount():
+    countfile = open('l.dat', 'a+')
+    countfile.seek(0)
+    counttext = countfile.read()
+    try:
+        count = int(counttext) + 1
+    except:
+        count = 1
+    countfile.seek(0)
+    countfile.truncate()
+    countfile.write(str(count))
+    countfile.flush
+    countfile.close()
+    return count
 
 def author(request):
     return render(request, 'author.html')

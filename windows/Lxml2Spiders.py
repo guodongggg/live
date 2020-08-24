@@ -69,6 +69,38 @@ def qie(url):
     return qiedata
 
 
+def bilibili(url):
+    content = HtmlString(url)
+    result = etree.HTML(content)
+
+    main_xpath = ''    
+    img_xpath = main_xpath + ''
+    name_xpath = main_xpath + ''
+    nick_xpath = main_xpath + ''
+    online_xpath = main_xpath + ''
+    url_xpath = main_xpath + ''
+
+    bilibilidata = CollectData(img_xpath, name_xpath, nick_xpath, online_xpath, url_xpath, result)
+
+    return bilibilidata
+
+
+def douyu(url):
+    content = HtmlString(url)
+    result = etree.HTML(content)
+
+    main_xpath = ''    
+    img_xpath = main_xpath + ''
+    name_xpath = main_xpath + ''
+    nick_xpath = main_xpath + ''
+    online_xpath = main_xpath + ''
+    url_xpath = main_xpath + ''
+
+    douyudata = CollectData(img_xpath, name_xpath, nick_xpath, online_xpath, url_xpath, result)
+
+    return douyudata
+
+
 if __name__ == '__main__':
     url1 = 'https://www.huya.com/g/lol'
     url2 = 'https://egame.qq.com/livelist?layoutid=lol'
